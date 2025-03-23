@@ -12,8 +12,7 @@ part of 'category_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
   return _CategoryModel.fromJson(json);
@@ -25,6 +24,7 @@ mixin _$CategoryModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'quizzes')
   List<QuizModel> get quizzes => throw _privateConstructorUsedError;
 
   /// Serializes this CategoryModel to a JSON map.
@@ -40,15 +40,13 @@ mixin _$CategoryModel {
 /// @nodoc
 abstract class $CategoryModelCopyWith<$Res> {
   factory $CategoryModelCopyWith(
-    CategoryModel value,
-    $Res Function(CategoryModel) then,
-  ) = _$CategoryModelCopyWithImpl<$Res, CategoryModel>;
+          CategoryModel value, $Res Function(CategoryModel) then) =
+      _$CategoryModelCopyWithImpl<$Res, CategoryModel>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'id') String id,
-    @JsonKey(name: 'name') String name,
-    List<QuizModel> quizzes,
-  });
+  $Res call(
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'quizzes') List<QuizModel> quizzes});
 }
 
 /// @nodoc
@@ -65,27 +63,25 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? name = null, Object? quizzes = null}) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String,
-            quizzes:
-                null == quizzes
-                    ? _value.quizzes
-                    : quizzes // ignore: cast_nullable_to_non_nullable
-                        as List<QuizModel>,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? quizzes = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      quizzes: null == quizzes
+          ? _value.quizzes
+          : quizzes // ignore: cast_nullable_to_non_nullable
+              as List<QuizModel>,
+    ) as $Val);
   }
 }
 
@@ -93,16 +89,14 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
 abstract class _$$CategoryModelImplCopyWith<$Res>
     implements $CategoryModelCopyWith<$Res> {
   factory _$$CategoryModelImplCopyWith(
-    _$CategoryModelImpl value,
-    $Res Function(_$CategoryModelImpl) then,
-  ) = __$$CategoryModelImplCopyWithImpl<$Res>;
+          _$CategoryModelImpl value, $Res Function(_$CategoryModelImpl) then) =
+      __$$CategoryModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'id') String id,
-    @JsonKey(name: 'name') String name,
-    List<QuizModel> quizzes,
-  });
+  $Res call(
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'quizzes') List<QuizModel> quizzes});
 }
 
 /// @nodoc
@@ -110,45 +104,43 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
     extends _$CategoryModelCopyWithImpl<$Res, _$CategoryModelImpl>
     implements _$$CategoryModelImplCopyWith<$Res> {
   __$$CategoryModelImplCopyWithImpl(
-    _$CategoryModelImpl _value,
-    $Res Function(_$CategoryModelImpl) _then,
-  ) : super(_value, _then);
+      _$CategoryModelImpl _value, $Res Function(_$CategoryModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? name = null, Object? quizzes = null}) {
-    return _then(
-      _$CategoryModelImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        quizzes:
-            null == quizzes
-                ? _value._quizzes
-                : quizzes // ignore: cast_nullable_to_non_nullable
-                    as List<QuizModel>,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? quizzes = null,
+  }) {
+    return _then(_$CategoryModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      quizzes: null == quizzes
+          ? _value._quizzes
+          : quizzes // ignore: cast_nullable_to_non_nullable
+              as List<QuizModel>,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CategoryModelImpl implements _CategoryModel {
-  const _$CategoryModelImpl({
-    @JsonKey(name: 'id') required this.id,
-    @JsonKey(name: 'name') required this.name,
-    final List<QuizModel> quizzes = const [],
-  }) : _quizzes = quizzes;
+  const _$CategoryModelImpl(
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'quizzes') required final List<QuizModel> quizzes})
+      : _quizzes = quizzes;
 
   factory _$CategoryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryModelImplFromJson(json);
@@ -161,7 +153,7 @@ class _$CategoryModelImpl implements _CategoryModel {
   final String name;
   final List<QuizModel> _quizzes;
   @override
-  @JsonKey()
+  @JsonKey(name: 'quizzes')
   List<QuizModel> get quizzes {
     if (_quizzes is EqualUnmodifiableListView) return _quizzes;
     // ignore: implicit_dynamic_type
@@ -186,11 +178,7 @@ class _$CategoryModelImpl implements _CategoryModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    name,
-    const DeepCollectionEquality().hash(_quizzes),
-  );
+      runtimeType, id, name, const DeepCollectionEquality().hash(_quizzes));
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.
@@ -202,16 +190,18 @@ class _$CategoryModelImpl implements _CategoryModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CategoryModelImplToJson(this);
+    return _$$CategoryModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _CategoryModel implements CategoryModel {
-  const factory _CategoryModel({
-    @JsonKey(name: 'id') required final String id,
-    @JsonKey(name: 'name') required final String name,
-    final List<QuizModel> quizzes,
-  }) = _$CategoryModelImpl;
+  const factory _CategoryModel(
+          {@JsonKey(name: 'id') required final String id,
+          @JsonKey(name: 'name') required final String name,
+          @JsonKey(name: 'quizzes') required final List<QuizModel> quizzes}) =
+      _$CategoryModelImpl;
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
       _$CategoryModelImpl.fromJson;
@@ -223,6 +213,7 @@ abstract class _CategoryModel implements CategoryModel {
   @JsonKey(name: 'name')
   String get name;
   @override
+  @JsonKey(name: 'quizzes')
   List<QuizModel> get quizzes;
 
   /// Create a copy of CategoryModel

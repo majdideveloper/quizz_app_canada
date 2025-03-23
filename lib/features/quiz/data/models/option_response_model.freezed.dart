@@ -12,8 +12,7 @@ part of 'option_response_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OptionResponseModel _$OptionResponseModelFromJson(Map<String, dynamic> json) {
   return _OptionResponseModel.fromJson(json);
@@ -39,14 +38,11 @@ mixin _$OptionResponseModel {
 /// @nodoc
 abstract class $OptionResponseModelCopyWith<$Res> {
   factory $OptionResponseModelCopyWith(
-    OptionResponseModel value,
-    $Res Function(OptionResponseModel) then,
-  ) = _$OptionResponseModelCopyWithImpl<$Res, OptionResponseModel>;
+          OptionResponseModel value, $Res Function(OptionResponseModel) then) =
+      _$OptionResponseModelCopyWithImpl<$Res, OptionResponseModel>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'id') String id,
-    @JsonKey(name: 'text') String text,
-  });
+  $Res call(
+      {@JsonKey(name: 'id') String id, @JsonKey(name: 'text') String text});
 }
 
 /// @nodoc
@@ -63,78 +59,70 @@ class _$OptionResponseModelCopyWithImpl<$Res, $Val extends OptionResponseModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? text = null}) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            text:
-                null == text
-                    ? _value.text
-                    : text // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? id = null,
+    Object? text = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$OptionResponseModelImplCopyWith<$Res>
     implements $OptionResponseModelCopyWith<$Res> {
-  factory _$$OptionResponseModelImplCopyWith(
-    _$OptionResponseModelImpl value,
-    $Res Function(_$OptionResponseModelImpl) then,
-  ) = __$$OptionResponseModelImplCopyWithImpl<$Res>;
+  factory _$$OptionResponseModelImplCopyWith(_$OptionResponseModelImpl value,
+          $Res Function(_$OptionResponseModelImpl) then) =
+      __$$OptionResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'id') String id,
-    @JsonKey(name: 'text') String text,
-  });
+  $Res call(
+      {@JsonKey(name: 'id') String id, @JsonKey(name: 'text') String text});
 }
 
 /// @nodoc
 class __$$OptionResponseModelImplCopyWithImpl<$Res>
     extends _$OptionResponseModelCopyWithImpl<$Res, _$OptionResponseModelImpl>
     implements _$$OptionResponseModelImplCopyWith<$Res> {
-  __$$OptionResponseModelImplCopyWithImpl(
-    _$OptionResponseModelImpl _value,
-    $Res Function(_$OptionResponseModelImpl) _then,
-  ) : super(_value, _then);
+  __$$OptionResponseModelImplCopyWithImpl(_$OptionResponseModelImpl _value,
+      $Res Function(_$OptionResponseModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OptionResponseModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? text = null}) {
-    return _then(
-      _$OptionResponseModelImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        text:
-            null == text
-                ? _value.text
-                : text // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? text = null,
+  }) {
+    return _then(_$OptionResponseModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$OptionResponseModelImpl implements _OptionResponseModel {
-  const _$OptionResponseModelImpl({
-    @JsonKey(name: 'id') required this.id,
-    @JsonKey(name: 'text') required this.text,
-  });
+  const _$OptionResponseModelImpl(
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'text') required this.text});
 
   factory _$OptionResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OptionResponseModelImplFromJson(json);
@@ -171,21 +159,21 @@ class _$OptionResponseModelImpl implements _OptionResponseModel {
   @pragma('vm:prefer-inline')
   _$$OptionResponseModelImplCopyWith<_$OptionResponseModelImpl> get copyWith =>
       __$$OptionResponseModelImplCopyWithImpl<_$OptionResponseModelImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OptionResponseModelImplToJson(this);
+    return _$$OptionResponseModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _OptionResponseModel implements OptionResponseModel {
-  const factory _OptionResponseModel({
-    @JsonKey(name: 'id') required final String id,
-    @JsonKey(name: 'text') required final String text,
-  }) = _$OptionResponseModelImpl;
+  const factory _OptionResponseModel(
+          {@JsonKey(name: 'id') required final String id,
+          @JsonKey(name: 'text') required final String text}) =
+      _$OptionResponseModelImpl;
 
   factory _OptionResponseModel.fromJson(Map<String, dynamic> json) =
       _$OptionResponseModelImpl.fromJson;

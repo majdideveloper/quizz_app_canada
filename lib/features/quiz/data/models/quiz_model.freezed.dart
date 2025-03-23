@@ -12,8 +12,7 @@ part of 'quiz_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 QuizModel _$QuizModelFromJson(Map<String, dynamic> json) {
   return _QuizModel.fromJson(json);
@@ -25,6 +24,7 @@ mixin _$QuizModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'questions')
   List<QuestionModel> get questions => throw _privateConstructorUsedError;
 
   /// Serializes this QuizModel to a JSON map.
@@ -42,11 +42,10 @@ abstract class $QuizModelCopyWith<$Res> {
   factory $QuizModelCopyWith(QuizModel value, $Res Function(QuizModel) then) =
       _$QuizModelCopyWithImpl<$Res, QuizModel>;
   @useResult
-  $Res call({
-    @JsonKey(name: 'id') String id,
-    @JsonKey(name: 'title') String title,
-    List<QuestionModel> questions,
-  });
+  $Res call(
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'questions') List<QuestionModel> questions});
 }
 
 /// @nodoc
@@ -68,26 +67,20 @@ class _$QuizModelCopyWithImpl<$Res, $Val extends QuizModel>
     Object? title = null,
     Object? questions = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            title:
-                null == title
-                    ? _value.title
-                    : title // ignore: cast_nullable_to_non_nullable
-                        as String,
-            questions:
-                null == questions
-                    ? _value.questions
-                    : questions // ignore: cast_nullable_to_non_nullable
-                        as List<QuestionModel>,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      questions: null == questions
+          ? _value.questions
+          : questions // ignore: cast_nullable_to_non_nullable
+              as List<QuestionModel>,
+    ) as $Val);
   }
 }
 
@@ -95,16 +88,14 @@ class _$QuizModelCopyWithImpl<$Res, $Val extends QuizModel>
 abstract class _$$QuizModelImplCopyWith<$Res>
     implements $QuizModelCopyWith<$Res> {
   factory _$$QuizModelImplCopyWith(
-    _$QuizModelImpl value,
-    $Res Function(_$QuizModelImpl) then,
-  ) = __$$QuizModelImplCopyWithImpl<$Res>;
+          _$QuizModelImpl value, $Res Function(_$QuizModelImpl) then) =
+      __$$QuizModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: 'id') String id,
-    @JsonKey(name: 'title') String title,
-    List<QuestionModel> questions,
-  });
+  $Res call(
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'questions') List<QuestionModel> questions});
 }
 
 /// @nodoc
@@ -112,9 +103,8 @@ class __$$QuizModelImplCopyWithImpl<$Res>
     extends _$QuizModelCopyWithImpl<$Res, _$QuizModelImpl>
     implements _$$QuizModelImplCopyWith<$Res> {
   __$$QuizModelImplCopyWithImpl(
-    _$QuizModelImpl _value,
-    $Res Function(_$QuizModelImpl) _then,
-  ) : super(_value, _then);
+      _$QuizModelImpl _value, $Res Function(_$QuizModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of QuizModel
   /// with the given fields replaced by the non-null parameter values.
@@ -125,36 +115,31 @@ class __$$QuizModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? questions = null,
   }) {
-    return _then(
-      _$QuizModelImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        title:
-            null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                    as String,
-        questions:
-            null == questions
-                ? _value._questions
-                : questions // ignore: cast_nullable_to_non_nullable
-                    as List<QuestionModel>,
-      ),
-    );
+    return _then(_$QuizModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      questions: null == questions
+          ? _value._questions
+          : questions // ignore: cast_nullable_to_non_nullable
+              as List<QuestionModel>,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$QuizModelImpl implements _QuizModel {
-  const _$QuizModelImpl({
-    @JsonKey(name: 'id') required this.id,
-    @JsonKey(name: 'title') required this.title,
-    final List<QuestionModel> questions = const [],
-  }) : _questions = questions;
+  const _$QuizModelImpl(
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'questions') required final List<QuestionModel> questions})
+      : _questions = questions;
 
   factory _$QuizModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizModelImplFromJson(json);
@@ -167,7 +152,7 @@ class _$QuizModelImpl implements _QuizModel {
   final String title;
   final List<QuestionModel> _questions;
   @override
-  @JsonKey()
+  @JsonKey(name: 'questions')
   List<QuestionModel> get questions {
     if (_questions is EqualUnmodifiableListView) return _questions;
     // ignore: implicit_dynamic_type
@@ -186,20 +171,14 @@ class _$QuizModelImpl implements _QuizModel {
             other is _$QuizModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            const DeepCollectionEquality().equals(
-              other._questions,
-              _questions,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._questions, _questions));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    title,
-    const DeepCollectionEquality().hash(_questions),
-  );
+      runtimeType, id, title, const DeepCollectionEquality().hash(_questions));
 
   /// Create a copy of QuizModel
   /// with the given fields replaced by the non-null parameter values.
@@ -211,16 +190,18 @@ class _$QuizModelImpl implements _QuizModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$QuizModelImplToJson(this);
+    return _$$QuizModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _QuizModel implements QuizModel {
-  const factory _QuizModel({
-    @JsonKey(name: 'id') required final String id,
-    @JsonKey(name: 'title') required final String title,
-    final List<QuestionModel> questions,
-  }) = _$QuizModelImpl;
+  const factory _QuizModel(
+      {@JsonKey(name: 'id') required final String id,
+      @JsonKey(name: 'title') required final String title,
+      @JsonKey(name: 'questions')
+      required final List<QuestionModel> questions}) = _$QuizModelImpl;
 
   factory _QuizModel.fromJson(Map<String, dynamic> json) =
       _$QuizModelImpl.fromJson;
@@ -232,6 +213,7 @@ abstract class _QuizModel implements QuizModel {
   @JsonKey(name: 'title')
   String get title;
   @override
+  @JsonKey(name: 'questions')
   List<QuestionModel> get questions;
 
   /// Create a copy of QuizModel

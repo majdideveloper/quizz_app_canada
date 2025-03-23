@@ -27,7 +27,7 @@ class CategoryRemoteDataSource {
   Future<List<CategoryModel>> getCategories() async {
     try {
       final response =
-          await pb.collection(NameCollections.categories).getFullList();
+          await pb.collection(NameCollections.categories).getFullList(expand:  'quizzes.questions.options, quizzes.questions.correctOption',);
       final requests =
           response.map((record) => CategoryModel.fromJson(record)).toList();
       return requests;

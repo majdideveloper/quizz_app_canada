@@ -6,36 +6,32 @@ import 'package:quizz_app_canada/features/quiz/data/models/option_response_model
 part 'question_model.freezed.dart';
 part 'question_model.g.dart';
 
-@Freezed(fromJson: true, toJson: true, equal: true)
+
+@Freezed(fromJson: true, toJson: true)
 class QuestionModel with _$QuestionModel {
   const factory QuestionModel({
     @JsonKey(name: 'id') required String id,
-    @JsonKey(name: 'question') required String question,
-    @Default([]) List<OptionResponseModel> options,
-    required OptionResponseModel correctOption,
+    @JsonKey(name: 'text') required String text,
+    @JsonKey(name: 'options') required List<OptionResponseModel> options,
+    @JsonKey(name: 'correctOption') required OptionResponseModel correctOption,
   }) = _QuestionModel;
 
-  factory QuestionModel.fromJson(RecordModel model) {
-    AppLogger.logger.d('QuestionModel.fromJson: ${model.data}');
-    final json = model.data;
+  factory QuestionModel.fromJson(RecordModel record) {
+    final json = Map<String, dynamic>.from(record.data ?? {});
+    final options = (record.expand?['options'] as List?)
+        ?.map((option) => OptionResponseModel.fromJson(option as RecordModel))
+        .toList();
 
-    json['id'] ??= model.id;
-    // List<OptionResponseModel> options = [];
-    // final optionsModel = model.expand['options'] ?? [];
-    // if (optionsModel.isNotEmpty) {
-    //   options =
-    //       optionsModel.map((o) {
-    //         return OptionResponseModel.fromJson(o);
-    //       }).toList();
-    // }
+    final correctOptionModel = record.expand?['correctOption'];
+    final correctOption = correctOptionModel != null
+        ? OptionResponseModel.fromJson(correctOptionModel.first)
+        : OptionResponseModel(id: '', text: '');
 
-    final correctOptionModel = model.expand['correctOption'];
-    final correctOption =
-        correctOptionModel != null
-            ? OptionResponseModel.fromJson(correctOptionModel.first)
-            : null;
-
-    final fromJson = _$QuestionModelFromJson(json);
-    return fromJson.copyWith(correctOption: correctOption!);
+    return QuestionModel(
+      id: record.id,
+      text: json['text'] ?? 'Unknown Question',
+      options: options ?? [],
+      correctOption: correctOption,
+    );
   }
 }

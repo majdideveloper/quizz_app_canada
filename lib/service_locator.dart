@@ -10,7 +10,7 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   // PocketBase instance
-  sl.registerLazySingleton(() => PocketBase(BaseUrl.urlAndroid));
+  sl.registerLazySingleton(() => PocketBase(BaseUrl.urlIos));
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl.call()));
 
   final sharedPreferences = await SharedPreferences.getInstance();

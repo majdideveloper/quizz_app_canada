@@ -8,27 +8,25 @@ import 'question_model.dart';
 part 'quiz_model.freezed.dart';
 part 'quiz_model.g.dart';
 
-@Freezed(fromJson: true, toJson: true, equal: true)
+
+@Freezed(fromJson: true, toJson: true)
 class QuizModel with _$QuizModel {
   const factory QuizModel({
     @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'title') required String title,
-    @Default([]) List<QuestionModel> questions,
+    @JsonKey(name: 'questions') required List<QuestionModel> questions,
   }) = _QuizModel;
 
-  factory QuizModel.fromJson(RecordModel model) {
-    AppLogger.logger.d('QuizModel.fromJson: ${model.data}');
-    final json = model.data;
-    List<QuestionModel> questions = [];
-    final questionsModel = model.expand['questions'] ?? [];
-    if (questionsModel.isNotEmpty) {
-      questions =
-          questionsModel.map((q) {
-            return QuestionModel.fromJson(q);
-          }).toList();
-    }
+  factory QuizModel.fromJson(RecordModel record) {
+    final json = Map<String, dynamic>.from(record.data ?? {});
+    final questions = (record.expand?['questions'] as List?)
+        ?.map((question) => QuestionModel.fromJson(question as RecordModel))
+        .toList();
 
-    final fromJson = _$QuizModelFromJson(json);
-    return fromJson.copyWith(questions: questions);
+    return QuizModel(
+      id: record.id,
+      title: json['title'] ?? 'Unknown',
+      questions: questions ?? [],
+    );
   }
 }
