@@ -22,8 +22,10 @@ QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) {
 mixin _$QuestionModel {
   @JsonKey(name: 'id')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'text')
-  String get text => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title')
+  String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hintWrongAnswer')
+  String get hintWrongAnswer => throw _privateConstructorUsedError;
   @JsonKey(name: 'options')
   List<OptionResponseModel> get options => throw _privateConstructorUsedError;
   @JsonKey(name: 'correctOption')
@@ -47,7 +49,8 @@ abstract class $QuestionModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'text') String text,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'hintWrongAnswer') String hintWrongAnswer,
       @JsonKey(name: 'options') List<OptionResponseModel> options,
       @JsonKey(name: 'correctOption') OptionResponseModel correctOption});
 
@@ -70,7 +73,8 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? title = null,
+    Object? hintWrongAnswer = null,
     Object? options = null,
     Object? correctOption = null,
   }) {
@@ -79,9 +83,13 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      hintWrongAnswer: null == hintWrongAnswer
+          ? _value.hintWrongAnswer
+          : hintWrongAnswer // ignore: cast_nullable_to_non_nullable
               as String,
       options: null == options
           ? _value.options
@@ -115,7 +123,8 @@ abstract class _$$QuestionModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'text') String text,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'hintWrongAnswer') String hintWrongAnswer,
       @JsonKey(name: 'options') List<OptionResponseModel> options,
       @JsonKey(name: 'correctOption') OptionResponseModel correctOption});
 
@@ -137,7 +146,8 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? title = null,
+    Object? hintWrongAnswer = null,
     Object? options = null,
     Object? correctOption = null,
   }) {
@@ -146,9 +156,13 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      hintWrongAnswer: null == hintWrongAnswer
+          ? _value.hintWrongAnswer
+          : hintWrongAnswer // ignore: cast_nullable_to_non_nullable
               as String,
       options: null == options
           ? _value._options
@@ -167,7 +181,8 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
 class _$QuestionModelImpl implements _QuestionModel {
   const _$QuestionModelImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'text') required this.text,
+      @JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'hintWrongAnswer') required this.hintWrongAnswer,
       @JsonKey(name: 'options')
       required final List<OptionResponseModel> options,
       @JsonKey(name: 'correctOption') required this.correctOption})
@@ -180,8 +195,11 @@ class _$QuestionModelImpl implements _QuestionModel {
   @JsonKey(name: 'id')
   final String id;
   @override
-  @JsonKey(name: 'text')
-  final String text;
+  @JsonKey(name: 'title')
+  final String title;
+  @override
+  @JsonKey(name: 'hintWrongAnswer')
+  final String hintWrongAnswer;
   final List<OptionResponseModel> _options;
   @override
   @JsonKey(name: 'options')
@@ -197,7 +215,7 @@ class _$QuestionModelImpl implements _QuestionModel {
 
   @override
   String toString() {
-    return 'QuestionModel(id: $id, text: $text, options: $options, correctOption: $correctOption)';
+    return 'QuestionModel(id: $id, title: $title, hintWrongAnswer: $hintWrongAnswer, options: $options, correctOption: $correctOption)';
   }
 
   @override
@@ -206,7 +224,9 @@ class _$QuestionModelImpl implements _QuestionModel {
         (other.runtimeType == runtimeType &&
             other is _$QuestionModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.text, text) || other.text == text) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.hintWrongAnswer, hintWrongAnswer) ||
+                other.hintWrongAnswer == hintWrongAnswer) &&
             const DeepCollectionEquality().equals(other._options, _options) &&
             (identical(other.correctOption, correctOption) ||
                 other.correctOption == correctOption));
@@ -214,7 +234,7 @@ class _$QuestionModelImpl implements _QuestionModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, text,
+  int get hashCode => Object.hash(runtimeType, id, title, hintWrongAnswer,
       const DeepCollectionEquality().hash(_options), correctOption);
 
   /// Create a copy of QuestionModel
@@ -236,7 +256,8 @@ class _$QuestionModelImpl implements _QuestionModel {
 abstract class _QuestionModel implements QuestionModel {
   const factory _QuestionModel(
       {@JsonKey(name: 'id') required final String id,
-      @JsonKey(name: 'text') required final String text,
+      @JsonKey(name: 'title') required final String title,
+      @JsonKey(name: 'hintWrongAnswer') required final String hintWrongAnswer,
       @JsonKey(name: 'options')
       required final List<OptionResponseModel> options,
       @JsonKey(name: 'correctOption')
@@ -249,8 +270,11 @@ abstract class _QuestionModel implements QuestionModel {
   @JsonKey(name: 'id')
   String get id;
   @override
-  @JsonKey(name: 'text')
-  String get text;
+  @JsonKey(name: 'title')
+  String get title;
+  @override
+  @JsonKey(name: 'hintWrongAnswer')
+  String get hintWrongAnswer;
   @override
   @JsonKey(name: 'options')
   List<OptionResponseModel> get options;

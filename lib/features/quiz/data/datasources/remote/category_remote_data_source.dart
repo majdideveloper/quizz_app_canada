@@ -11,9 +11,7 @@ class CategoryRemoteDataSource {
 
   Future<CategoryModel> getCategory(String categoryId) async {
     try {
-      final record = await pb
-          .collection(NameCollections.categories)
-          .getOne(
+      final record = await pb.collection(NameCollections.categories).getOne(
             categoryId,
             expand: 'quizzes.questions.options,quizzes.questions.correctOption',
           );
@@ -27,7 +25,10 @@ class CategoryRemoteDataSource {
   Future<List<CategoryModel>> getCategories() async {
     try {
       final response =
-          await pb.collection(NameCollections.categories).getFullList(expand:  'quizzes.questions.options, quizzes.questions.correctOption',);
+          await pb.collection(NameCollections.categories).getFullList(
+                expand:
+                    'quizzes.questions.options, quizzes.questions.correctOption',
+              );
       final requests =
           response.map((record) => CategoryModel.fromJson(record)).toList();
       return requests;

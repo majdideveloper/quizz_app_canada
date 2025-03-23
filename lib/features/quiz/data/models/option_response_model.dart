@@ -10,14 +10,14 @@ part 'option_response_model.g.dart';
 class OptionResponseModel with _$OptionResponseModel {
   const factory OptionResponseModel({
     @JsonKey(name: 'id') required String id,
-    @JsonKey(name: 'text') required String text,
+    @JsonKey(name: 'title') required String title,
   }) = _OptionResponseModel;
 
   factory OptionResponseModel.fromJson(RecordModel model) {
     final json = model.data ?? {};
     return OptionResponseModel(
       id: json['id'] ?? '',
-      text: json['text'] ?? 'Unknown',
+      title: json['title'] ?? 'Unknown',
     );
   }
 }

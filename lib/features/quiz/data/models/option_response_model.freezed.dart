@@ -22,8 +22,8 @@ OptionResponseModel _$OptionResponseModelFromJson(Map<String, dynamic> json) {
 mixin _$OptionResponseModel {
   @JsonKey(name: 'id')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'text')
-  String get text => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title')
+  String get title => throw _privateConstructorUsedError;
 
   /// Serializes this OptionResponseModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $OptionResponseModelCopyWith<$Res> {
       _$OptionResponseModelCopyWithImpl<$Res, OptionResponseModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id, @JsonKey(name: 'text') String text});
+      {@JsonKey(name: 'id') String id, @JsonKey(name: 'title') String title});
 }
 
 /// @nodoc
@@ -61,16 +61,16 @@ class _$OptionResponseModelCopyWithImpl<$Res, $Val extends OptionResponseModel>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? title = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -85,7 +85,7 @@ abstract class _$$OptionResponseModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id, @JsonKey(name: 'text') String text});
+      {@JsonKey(name: 'id') String id, @JsonKey(name: 'title') String title});
 }
 
 /// @nodoc
@@ -102,16 +102,16 @@ class __$$OptionResponseModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? title = null,
   }) {
     return _then(_$OptionResponseModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -122,7 +122,7 @@ class __$$OptionResponseModelImplCopyWithImpl<$Res>
 class _$OptionResponseModelImpl implements _OptionResponseModel {
   const _$OptionResponseModelImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'text') required this.text});
+      @JsonKey(name: 'title') required this.title});
 
   factory _$OptionResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OptionResponseModelImplFromJson(json);
@@ -131,12 +131,12 @@ class _$OptionResponseModelImpl implements _OptionResponseModel {
   @JsonKey(name: 'id')
   final String id;
   @override
-  @JsonKey(name: 'text')
-  final String text;
+  @JsonKey(name: 'title')
+  final String title;
 
   @override
   String toString() {
-    return 'OptionResponseModel(id: $id, text: $text)';
+    return 'OptionResponseModel(id: $id, title: $title)';
   }
 
   @override
@@ -145,12 +145,12 @@ class _$OptionResponseModelImpl implements _OptionResponseModel {
         (other.runtimeType == runtimeType &&
             other is _$OptionResponseModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, text);
+  int get hashCode => Object.hash(runtimeType, id, title);
 
   /// Create a copy of OptionResponseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -172,7 +172,7 @@ class _$OptionResponseModelImpl implements _OptionResponseModel {
 abstract class _OptionResponseModel implements OptionResponseModel {
   const factory _OptionResponseModel(
           {@JsonKey(name: 'id') required final String id,
-          @JsonKey(name: 'text') required final String text}) =
+          @JsonKey(name: 'title') required final String title}) =
       _$OptionResponseModelImpl;
 
   factory _OptionResponseModel.fromJson(Map<String, dynamic> json) =
@@ -182,8 +182,8 @@ abstract class _OptionResponseModel implements OptionResponseModel {
   @JsonKey(name: 'id')
   String get id;
   @override
-  @JsonKey(name: 'text')
-  String get text;
+  @JsonKey(name: 'title')
+  String get title;
 
   /// Create a copy of OptionResponseModel
   /// with the given fields replaced by the non-null parameter values.

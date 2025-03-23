@@ -10,12 +10,12 @@ _$OptionResponseModelImpl _$$OptionResponseModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OptionResponseModelImpl(
       id: json['id'] as String,
-      text: json['text'] as String,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$OptionResponseModelImplToJson(
         _$OptionResponseModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'text': instance.text,
+      'title': instance.title,
     };

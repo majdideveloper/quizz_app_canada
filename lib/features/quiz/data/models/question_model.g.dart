@@ -9,7 +9,8 @@ part of 'question_model.dart';
 _$QuestionModelImpl _$$QuestionModelImplFromJson(Map<String, dynamic> json) =>
     _$QuestionModelImpl(
       id: json['id'] as String,
-      text: json['text'] as String,
+      title: json['title'] as String,
+      hintWrongAnswer: json['hintWrongAnswer'] as String,
       options: (json['options'] as List<dynamic>)
           .map((e) => OptionResponseModel.fromJson(
               RecordModel.fromJson(e as Map<String, dynamic>)))
@@ -21,7 +22,8 @@ _$QuestionModelImpl _$$QuestionModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'text': instance.text,
+      'title': instance.title,
+      'hintWrongAnswer': instance.hintWrongAnswer,
       'options': instance.options,
       'correctOption': instance.correctOption,
     };

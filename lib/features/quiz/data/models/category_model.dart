@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pocketbase/pocketbase.dart';
-import 'package:quizz_app_canada/core/utils/logger.dart';
-import 'package:quizz_app_canada/features/quiz/data/models/question_model.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/quiz_model.dart';
 
 part 'category_model.freezed.dart';

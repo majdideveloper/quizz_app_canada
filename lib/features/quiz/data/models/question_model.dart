@@ -11,7 +11,8 @@ part 'question_model.g.dart';
 class QuestionModel with _$QuestionModel {
   const factory QuestionModel({
     @JsonKey(name: 'id') required String id,
-    @JsonKey(name: 'text') required String text,
+    @JsonKey(name: 'title') required String title,
+    @JsonKey(name: 'hintWrongAnswer') required String hintWrongAnswer ,
     @JsonKey(name: 'options') required List<OptionResponseModel> options,
     @JsonKey(name: 'correctOption') required OptionResponseModel correctOption,
   }) = _QuestionModel;
@@ -25,13 +26,14 @@ class QuestionModel with _$QuestionModel {
     final correctOptionModel = record.expand?['correctOption'];
     final correctOption = correctOptionModel != null
         ? OptionResponseModel.fromJson(correctOptionModel.first)
-        : OptionResponseModel(id: '', text: '');
+        : OptionResponseModel(id: '', title: '');
 
     return QuestionModel(
       id: record.id,
-      text: json['text'] ?? 'Unknown Question',
+      title: json['title'] ?? 'Unknown Question',
       options: options ?? [],
       correctOption: correctOption,
+      hintWrongAnswer: json['hintWrongAnswer'],
     );
   }
 }
