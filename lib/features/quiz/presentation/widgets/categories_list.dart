@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/category_model.dart';
-import 'package:quizz_app_canada/features/quiz/data/models/option_response_model.dart';
-import 'package:quizz_app_canada/features/quiz/data/models/question_model.dart';
+
 import 'package:quizz_app_canada/features/quiz/presentation/cubit/category/category_cubit.dart';
+import 'package:quizz_app_canada/features/quiz/presentation/pages/category_page.dart';
 import 'package:quizz_app_canada/features/quiz/presentation/pages/quiz_page.dart';
 
 class CategoriesList extends StatelessWidget {
@@ -12,7 +12,7 @@ class CategoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Categories')),
+    
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<CategoryCubit, CategoryState>(
@@ -90,59 +90,5 @@ class CategoryItem extends StatelessWidget {
   }
 }
 
-class CategoryPage extends StatelessWidget {
-  final CategoryModel category;
-
-  const CategoryPage({super.key, required this.category});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(category.name)),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Quizzes:',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            // Check if quizzes are available
-            category.quizzes.isEmpty
-                ? const Center(child: Text('No quizzes available'))
-                : ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: category.quizzes.length,
-                    itemBuilder: (context, index) {
-                      final quiz = category.quizzes[index];
-                      return ListTile(
-                        title: Text(quiz
-                            .title), // Assuming `quiz` has a `name` property
-                        onTap: () {
-                          // Navigate to the category page
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  QuizPage(questions: quiz.questions),
-                            ),
-                          );
-                          // Handle quiz tap
-                          // Navigate to quiz details page or start quiz
-                        },
-                      );
-                    },
-                  ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 

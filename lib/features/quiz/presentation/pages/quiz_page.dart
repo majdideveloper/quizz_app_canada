@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/option_response_model.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/question_model.dart';
+import 'package:quizz_app_canada/features/quiz/presentation/cubit/quiz/quiz_cubit.dart';
 
 class QuizPage extends StatefulWidget {
   final List<QuestionModel> questions;
@@ -108,6 +110,7 @@ class _QuizPageState extends State<QuizPage> {
                       hasVerified = false; // Reset verification for next question
                     });
                   } else {
+                    context.read<QuizCubit>().completeFreeQuiz();
                     Navigator.pop(context);
                   }
                 },

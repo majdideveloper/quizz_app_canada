@@ -1,12 +1,17 @@
 import 'package:quizz_app_canada/features/quiz/data/datasources/local/category_local_data_source.dart';
+import 'package:quizz_app_canada/features/quiz/data/datasources/local/quiz_local_data_source.dart';
 import 'package:quizz_app_canada/features/quiz/data/datasources/remote/category_remote_data_source.dart';
+import 'package:quizz_app_canada/features/quiz/data/datasources/remote/quiz_remote_data_source.dart';
 import 'package:quizz_app_canada/features/quiz/data/repositories/category_repository.dart';
+import 'package:quizz_app_canada/features/quiz/data/repositories/quiz_repository.dart';
 import 'package:quizz_app_canada/features/quiz/presentation/cubit/category/category_cubit.dart';
+import 'package:quizz_app_canada/features/quiz/presentation/cubit/quiz/quiz_cubit.dart';
 import 'package:quizz_app_canada/service_locator.dart';
 
 Future<void> quizServiceLocator() async {
   // * CUBITS INJECTION
   sl.registerFactory(() => CategoryCubit(categoryRepository: sl.call()));
+  sl.registerFactory(() => QuizCubit(quizRepository: sl.call()));
 
   // * USE CASES INJECTION
 
@@ -16,6 +21,10 @@ Future<void> quizServiceLocator() async {
   sl.registerLazySingleton(
     () => CategoryLocalDataSource(sharedPreferences: sl.call()),
   );
+
+  sl.registerLazySingleton(
+      () => QuizLocalDataSource(sharedPreferences: sl.call()));
+  sl.registerLazySingleton(() => QuizRemoteDataSource(pb: sl.call()));
 
   // * REPOSITORY & DATA SOURCES INJECTION
   //! This is an example of how to inject a repository with implementations of remote and local data sources
@@ -35,4 +44,9 @@ Future<void> quizServiceLocator() async {
       localDataSource: sl.call(),
     ),
   );
+
+  sl.registerLazySingleton(() => QuizRepository(
+      networkInfo: sl.call(),
+      remoteDataSource: sl.call(),
+      localDataSource: sl.call()));
 }

@@ -16,37 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$QuizState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  bool get hasTestedQuiz => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  /// Create a copy of QuizState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $QuizStateCopyWith<QuizState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -54,6 +31,8 @@ mixin _$QuizState {
 abstract class $QuizStateCopyWith<$Res> {
   factory $QuizStateCopyWith(QuizState value, $Res Function(QuizState) then) =
       _$QuizStateCopyWithImpl<$Res, QuizState>;
+  @useResult
+  $Res call({bool hasTestedQuiz, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
@@ -68,103 +47,138 @@ class _$QuizStateCopyWithImpl<$Res, $Val extends QuizState>
 
   /// Create a copy of QuizState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hasTestedQuiz = null,
+    Object? isLoading = null,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      hasTestedQuiz: null == hasTestedQuiz
+          ? _value.hasTestedQuiz
+          : hasTestedQuiz // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$QuizStateImplCopyWith<$Res>
+    implements $QuizStateCopyWith<$Res> {
+  factory _$$QuizStateImplCopyWith(
+          _$QuizStateImpl value, $Res Function(_$QuizStateImpl) then) =
+      __$$QuizStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool hasTestedQuiz, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$QuizStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$QuizStateImplCopyWithImpl<$Res>
+    extends _$QuizStateCopyWithImpl<$Res, _$QuizStateImpl>
+    implements _$$QuizStateImplCopyWith<$Res> {
+  __$$QuizStateImplCopyWithImpl(
+      _$QuizStateImpl _value, $Res Function(_$QuizStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of QuizState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hasTestedQuiz = null,
+    Object? isLoading = null,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$QuizStateImpl(
+      hasTestedQuiz: null == hasTestedQuiz
+          ? _value.hasTestedQuiz
+          : hasTestedQuiz // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$QuizStateImpl implements _QuizState {
+  const _$QuizStateImpl(
+      {required this.hasTestedQuiz,
+      required this.isLoading,
+      this.errorMessage});
+
+  @override
+  final bool hasTestedQuiz;
+  @override
+  final bool isLoading;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'QuizState.initial()';
+    return 'QuizState(hasTestedQuiz: $hasTestedQuiz, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$QuizStateImpl &&
+            (identical(other.hasTestedQuiz, hasTestedQuiz) ||
+                other.hasTestedQuiz == hasTestedQuiz) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, hasTestedQuiz, isLoading, errorMessage);
 
+  /// Create a copy of QuizState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$QuizStateImplCopyWith<_$QuizStateImpl> get copyWith =>
+      __$$QuizStateImplCopyWithImpl<_$QuizStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements QuizState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _QuizState implements QuizState {
+  const factory _QuizState(
+      {required final bool hasTestedQuiz,
+      required final bool isLoading,
+      final String? errorMessage}) = _$QuizStateImpl;
+
+  @override
+  bool get hasTestedQuiz;
+  @override
+  bool get isLoading;
+  @override
+  String? get errorMessage;
+
+  /// Create a copy of QuizState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$QuizStateImplCopyWith<_$QuizStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

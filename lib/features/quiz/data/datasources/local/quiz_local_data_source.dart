@@ -19,4 +19,14 @@ class QuizLocalDataSource {
     }
     return null;
   }
+
+
+  Future<bool> hasUserTestedQuiz() async {
+    return sharedPreferences.getBool('hasTestedQuiz') ?? false;
+  }
+
+
+  Future<void> setUserTestedQuiz() async {
+    await sharedPreferences.setBool('hasTestedQuiz', true);
+  }
 }

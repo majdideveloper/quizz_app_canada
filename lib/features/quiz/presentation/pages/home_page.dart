@@ -8,7 +8,21 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Home Page')),
-      body: CategoriesList(),
+      body: Column(
+        children: [
+          WelcomeWidget(),
+          Expanded(child: CategoriesList()),
+        ],
+      ),
     );
+  }
+}
+
+class WelcomeWidget extends StatelessWidget {
+  const WelcomeWidget({super.key});
+
+  @override
+  Widget build(Object context) {
+    return Text('Welcome to our APP');
   }
 }
