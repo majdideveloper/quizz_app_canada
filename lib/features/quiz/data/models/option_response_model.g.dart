@@ -11,6 +11,7 @@ _$OptionResponseModelImpl _$$OptionResponseModelImplFromJson(
     _$OptionResponseModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
+      imageResponse: json['imageResponse'] as String?,
     );
 
 Map<String, dynamic> _$$OptionResponseModelImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$OptionResponseModelImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'imageResponse': instance.imageResponse,
     };

@@ -17,6 +17,7 @@ _$QuestionModelImpl _$$QuestionModelImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       correctOption: OptionResponseModel.fromJson(
           RecordModel.fromJson(json['correctOption'] as Map<String, dynamic>)),
+      imageQuestion: json['imageQuestion'] as String?,
     );
 
 Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
       'hintWrongAnswer': instance.hintWrongAnswer,
       'options': instance.options,
       'correctOption': instance.correctOption,
+      'imageQuestion': instance.imageQuestion,
     };

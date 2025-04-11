@@ -13,7 +13,7 @@ class QuizRemoteDataSource {
     try {
       final record = await pb
           .collection(NameCollections.quizzes)
-          .getOne(quizId, expand: 'questions.options');
+          .getOne(quizId, expand: 'questions.options, questions.correctOption');
       return QuizModel.fromJson(record);
     } catch (e) {
       AppLogger.logger.d(e.toString());

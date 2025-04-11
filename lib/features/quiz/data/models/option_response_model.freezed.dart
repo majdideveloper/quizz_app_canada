@@ -24,6 +24,8 @@ mixin _$OptionResponseModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'imageResponse')
+  String? get imageResponse => throw _privateConstructorUsedError;
 
   /// Serializes this OptionResponseModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +44,9 @@ abstract class $OptionResponseModelCopyWith<$Res> {
       _$OptionResponseModelCopyWithImpl<$Res, OptionResponseModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id, @JsonKey(name: 'title') String title});
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'imageResponse') String? imageResponse});
 }
 
 /// @nodoc
@@ -62,6 +66,7 @@ class _$OptionResponseModelCopyWithImpl<$Res, $Val extends OptionResponseModel>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? imageResponse = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -72,6 +77,10 @@ class _$OptionResponseModelCopyWithImpl<$Res, $Val extends OptionResponseModel>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      imageResponse: freezed == imageResponse
+          ? _value.imageResponse
+          : imageResponse // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -85,7 +94,9 @@ abstract class _$$OptionResponseModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id, @JsonKey(name: 'title') String title});
+      {@JsonKey(name: 'id') String id,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'imageResponse') String? imageResponse});
 }
 
 /// @nodoc
@@ -103,6 +114,7 @@ class __$$OptionResponseModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? imageResponse = freezed,
   }) {
     return _then(_$OptionResponseModelImpl(
       id: null == id
@@ -113,6 +125,10 @@ class __$$OptionResponseModelImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      imageResponse: freezed == imageResponse
+          ? _value.imageResponse
+          : imageResponse // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -122,7 +138,8 @@ class __$$OptionResponseModelImplCopyWithImpl<$Res>
 class _$OptionResponseModelImpl implements _OptionResponseModel {
   const _$OptionResponseModelImpl(
       {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'title') required this.title});
+      @JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'imageResponse') this.imageResponse});
 
   factory _$OptionResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OptionResponseModelImplFromJson(json);
@@ -133,10 +150,13 @@ class _$OptionResponseModelImpl implements _OptionResponseModel {
   @override
   @JsonKey(name: 'title')
   final String title;
+  @override
+  @JsonKey(name: 'imageResponse')
+  final String? imageResponse;
 
   @override
   String toString() {
-    return 'OptionResponseModel(id: $id, title: $title)';
+    return 'OptionResponseModel(id: $id, title: $title, imageResponse: $imageResponse)';
   }
 
   @override
@@ -145,12 +165,14 @@ class _$OptionResponseModelImpl implements _OptionResponseModel {
         (other.runtimeType == runtimeType &&
             other is _$OptionResponseModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.imageResponse, imageResponse) ||
+                other.imageResponse == imageResponse));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title);
+  int get hashCode => Object.hash(runtimeType, id, title, imageResponse);
 
   /// Create a copy of OptionResponseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -172,7 +194,8 @@ class _$OptionResponseModelImpl implements _OptionResponseModel {
 abstract class _OptionResponseModel implements OptionResponseModel {
   const factory _OptionResponseModel(
           {@JsonKey(name: 'id') required final String id,
-          @JsonKey(name: 'title') required final String title}) =
+          @JsonKey(name: 'title') required final String title,
+          @JsonKey(name: 'imageResponse') final String? imageResponse}) =
       _$OptionResponseModelImpl;
 
   factory _OptionResponseModel.fromJson(Map<String, dynamic> json) =
@@ -184,6 +207,9 @@ abstract class _OptionResponseModel implements OptionResponseModel {
   @override
   @JsonKey(name: 'title')
   String get title;
+  @override
+  @JsonKey(name: 'imageResponse')
+  String? get imageResponse;
 
   /// Create a copy of OptionResponseModel
   /// with the given fields replaced by the non-null parameter values.

@@ -11,6 +11,7 @@ class OptionResponseModel with _$OptionResponseModel {
   const factory OptionResponseModel({
     @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'title') required String title,
+    @JsonKey(name: 'imageResponse') String? imageResponse, // nullable field
   }) = _OptionResponseModel;
 
   factory OptionResponseModel.fromJson(RecordModel model) {
@@ -18,6 +19,7 @@ class OptionResponseModel with _$OptionResponseModel {
     return OptionResponseModel(
       id: json['id'] ?? '',
       title: json['title'] ?? 'Unknown',
+      imageResponse: json['imageResponse'] ,
     );
   }
 }

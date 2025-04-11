@@ -30,6 +30,8 @@ mixin _$QuestionModel {
   List<OptionResponseModel> get options => throw _privateConstructorUsedError;
   @JsonKey(name: 'correctOption')
   OptionResponseModel get correctOption => throw _privateConstructorUsedError;
+  @JsonKey(name: 'imageQuestion')
+  String? get imageQuestion => throw _privateConstructorUsedError;
 
   /// Serializes this QuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,7 +54,8 @@ abstract class $QuestionModelCopyWith<$Res> {
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'hintWrongAnswer') String hintWrongAnswer,
       @JsonKey(name: 'options') List<OptionResponseModel> options,
-      @JsonKey(name: 'correctOption') OptionResponseModel correctOption});
+      @JsonKey(name: 'correctOption') OptionResponseModel correctOption,
+      @JsonKey(name: 'imageQuestion') String? imageQuestion});
 
   $OptionResponseModelCopyWith<$Res> get correctOption;
 }
@@ -77,6 +80,7 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
     Object? hintWrongAnswer = null,
     Object? options = null,
     Object? correctOption = null,
+    Object? imageQuestion = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -99,6 +103,10 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
           ? _value.correctOption
           : correctOption // ignore: cast_nullable_to_non_nullable
               as OptionResponseModel,
+      imageQuestion: freezed == imageQuestion
+          ? _value.imageQuestion
+          : imageQuestion // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -126,7 +134,8 @@ abstract class _$$QuestionModelImplCopyWith<$Res>
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'hintWrongAnswer') String hintWrongAnswer,
       @JsonKey(name: 'options') List<OptionResponseModel> options,
-      @JsonKey(name: 'correctOption') OptionResponseModel correctOption});
+      @JsonKey(name: 'correctOption') OptionResponseModel correctOption,
+      @JsonKey(name: 'imageQuestion') String? imageQuestion});
 
   @override
   $OptionResponseModelCopyWith<$Res> get correctOption;
@@ -150,6 +159,7 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
     Object? hintWrongAnswer = null,
     Object? options = null,
     Object? correctOption = null,
+    Object? imageQuestion = freezed,
   }) {
     return _then(_$QuestionModelImpl(
       id: null == id
@@ -172,6 +182,10 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
           ? _value.correctOption
           : correctOption // ignore: cast_nullable_to_non_nullable
               as OptionResponseModel,
+      imageQuestion: freezed == imageQuestion
+          ? _value.imageQuestion
+          : imageQuestion // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -185,7 +199,8 @@ class _$QuestionModelImpl implements _QuestionModel {
       @JsonKey(name: 'hintWrongAnswer') required this.hintWrongAnswer,
       @JsonKey(name: 'options')
       required final List<OptionResponseModel> options,
-      @JsonKey(name: 'correctOption') required this.correctOption})
+      @JsonKey(name: 'correctOption') required this.correctOption,
+      @JsonKey(name: 'imageQuestion') this.imageQuestion})
       : _options = options;
 
   factory _$QuestionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -212,10 +227,13 @@ class _$QuestionModelImpl implements _QuestionModel {
   @override
   @JsonKey(name: 'correctOption')
   final OptionResponseModel correctOption;
+  @override
+  @JsonKey(name: 'imageQuestion')
+  final String? imageQuestion;
 
   @override
   String toString() {
-    return 'QuestionModel(id: $id, title: $title, hintWrongAnswer: $hintWrongAnswer, options: $options, correctOption: $correctOption)';
+    return 'QuestionModel(id: $id, title: $title, hintWrongAnswer: $hintWrongAnswer, options: $options, correctOption: $correctOption, imageQuestion: $imageQuestion)';
   }
 
   @override
@@ -229,13 +247,21 @@ class _$QuestionModelImpl implements _QuestionModel {
                 other.hintWrongAnswer == hintWrongAnswer) &&
             const DeepCollectionEquality().equals(other._options, _options) &&
             (identical(other.correctOption, correctOption) ||
-                other.correctOption == correctOption));
+                other.correctOption == correctOption) &&
+            (identical(other.imageQuestion, imageQuestion) ||
+                other.imageQuestion == imageQuestion));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, hintWrongAnswer,
-      const DeepCollectionEquality().hash(_options), correctOption);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      hintWrongAnswer,
+      const DeepCollectionEquality().hash(_options),
+      correctOption,
+      imageQuestion);
 
   /// Create a copy of QuestionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -261,7 +287,9 @@ abstract class _QuestionModel implements QuestionModel {
       @JsonKey(name: 'options')
       required final List<OptionResponseModel> options,
       @JsonKey(name: 'correctOption')
-      required final OptionResponseModel correctOption}) = _$QuestionModelImpl;
+      required final OptionResponseModel correctOption,
+      @JsonKey(name: 'imageQuestion')
+      final String? imageQuestion}) = _$QuestionModelImpl;
 
   factory _QuestionModel.fromJson(Map<String, dynamic> json) =
       _$QuestionModelImpl.fromJson;
@@ -281,6 +309,9 @@ abstract class _QuestionModel implements QuestionModel {
   @override
   @JsonKey(name: 'correctOption')
   OptionResponseModel get correctOption;
+  @override
+  @JsonKey(name: 'imageQuestion')
+  String? get imageQuestion;
 
   /// Create a copy of QuestionModel
   /// with the given fields replaced by the non-null parameter values.
