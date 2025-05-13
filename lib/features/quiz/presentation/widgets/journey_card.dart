@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz_app_canada/core/theme/theme_app.dart';
@@ -12,6 +10,7 @@ class JourneyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Container(
       width: double.infinity,
@@ -25,7 +24,7 @@ class JourneyCard extends StatelessWidget {
         children: [
           Text(
             '__Begin Your Journey',
-            style: AppTypography.createHeadingSmall(colorScheme.onPrimary),
+             style: AppTypography.createHeadingSmall(colorScheme.onPrimary),
           ),
           const SizedBox(height: AppSpacing.xs),
           Text(
@@ -37,11 +36,16 @@ class JourneyCard extends StatelessWidget {
             listener: (context, state) {
               state.whenOrNull(
                 loaded: (questions) {
-                  Navigator.push(
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (_) => QuizPage(questions: questions),
+                  //   ),
+                  // );
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (_) => QuizPage(questions: questions),
-                    ),
+                    '/quiz',
+                    arguments: questions,
                   );
                 },
                 error: (message) {

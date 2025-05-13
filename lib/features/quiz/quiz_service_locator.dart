@@ -4,7 +4,7 @@ import 'package:quizz_app_canada/features/quiz/data/datasources/remote/category_
 import 'package:quizz_app_canada/features/quiz/data/datasources/remote/quiz_remote_data_source.dart';
 import 'package:quizz_app_canada/features/quiz/data/repositories/category_repository.dart';
 import 'package:quizz_app_canada/features/quiz/data/repositories/quiz_repository.dart';
-import 'package:quizz_app_canada/features/quiz/presentation/cubit/category/category_cubit.dart';
+import 'package:quizz_app_canada/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:quizz_app_canada/features/quiz/presentation/cubit/quiz/quiz_cubit.dart';
 import 'package:quizz_app_canada/service_locator.dart';
 

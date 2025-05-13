@@ -14,4 +14,4 @@ class QuizService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(hasTestedQuizKey, true);
   }
-}
+}//! TODO refactor this with bloc

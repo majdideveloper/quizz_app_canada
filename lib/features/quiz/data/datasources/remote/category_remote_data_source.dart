@@ -17,7 +17,6 @@ class CategoryRemoteDataSource {
           );
       return CategoryModel.fromJson(record);
     } catch (e) {
-      AppLogger.logger.d(e.toString());
       throw ServerException();
     }
   }
@@ -27,14 +26,13 @@ class CategoryRemoteDataSource {
       final response =
           await pb.collection(NameCollections.categories).getFullList(
                 expand:
-                    'quizzes.questions.options, quizzes.questions.correctOption',
+                    'quizzes.questions.options, quizzes.questions.correctOption, courses',
               );
       final requests =
           response.map((record) => CategoryModel.fromJson(record)).toList();
+
       return requests;
     } catch (e, strackTrace) {
-      AppLogger.logger.d(e.toString());
-      AppLogger.logger.d(strackTrace.toString());
       throw ServerException();
     }
   }

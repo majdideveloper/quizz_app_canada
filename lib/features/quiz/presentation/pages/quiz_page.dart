@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz_app_canada/core/constants/name_collections.dart';
@@ -6,7 +8,7 @@ import 'package:quizz_app_canada/core/extensions/question.dart';
 import 'package:quizz_app_canada/core/utils/logger.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/option_response_model.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/question_model.dart';
-import 'package:quizz_app_canada/features/quiz/presentation/cubit/quiz/quiz_cubit.dart';
+
 import 'package:quizz_app_canada/features/quiz/presentation/pages/quiz_result_page.dart';
 
 class QuizPage extends StatefulWidget {
@@ -24,6 +26,43 @@ class _QuizPageState extends State<QuizPage> {
   String? feedbackMessage;
   bool hasVerified = false; // Track if user has verified
 
+  // Track correct answers
+  int correctAnswers = 0;
+
+  // Add timing variables
+  DateTime startTime = DateTime.now();
+  int timeInSeconds = 0;
+  Timer? quizTimer;
+
+  // Track answers for each question
+  List<bool> questionResults = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize questionResults list with nulls for each question
+    questionResults = List<bool>.filled(widget.questions.length, false);
+
+    // Start quiz timer
+    startTime = DateTime.now();
+
+    // Setup timer to update elapsed time every second
+    quizTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (mounted) {
+        setState(() {
+          timeInSeconds = DateTime.now().difference(startTime).inSeconds;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    // Cancel timer when widget is disposed
+    quizTimer?.cancel();
+    super.dispose();
+  }
+
   void _handleOptionSelected(OptionResponseModel option) {
     if (!hasVerified) {
       setState(() {
@@ -33,15 +72,46 @@ class _QuizPageState extends State<QuizPage> {
     }
   }
 
+  // Format seconds to minutes:seconds
+  String formatTime(int seconds) {
+    int minutes = seconds ~/ 60;
+    int remainingSeconds = seconds % 60;
+    return '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
+
+  // Calculate quiz accuracy percentage
+  int calculateAccuracy() {
+    if (questionResults.isEmpty) return 0;
+    int correctCount = questionResults.where((result) => result).length;
+    return ((correctCount / questionResults.length) * 100).round();
+  }
+
   @override
   Widget build(BuildContext context) {
     final currentQuestion = widget.questions[currentQuestionIndex];
     double progress = (currentQuestionIndex + 1) / widget.questions.length;
     final imageUrl = widget.questions[currentQuestionIndex]
         .getImageUrl(BaseUrl.urlIos, NameCollections.questions);
-    AppLogger.logger.d("current Question: ${currentQuestion}");
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Quiz'),
+        actions: [
+          // Display timer in app bar
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(
+              child: Text(
+                formatTime(timeInSeconds),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -81,7 +151,7 @@ class _QuizPageState extends State<QuizPage> {
               if (feedbackMessage != null) ...[
                 const SizedBox(height: 20),
                 Container(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: feedbackMessage!.contains("✅")
                         ? Colors.green.shade50
@@ -116,12 +186,17 @@ class _QuizPageState extends State<QuizPage> {
                 onPressed: selectedOption == null
                     ? null
                     : () {
-                        AppLogger.logger
-                            .d("Selected option: ${selectedOption!.title}");
-                        AppLogger.logger.d(
-                            "Selected option from current question: ${currentQuestion.correctOption.title}");
                         bool isCorrect = selectedOption!.title ==
                             currentQuestion.correctOption.title;
+
+                        // Record the result for this question
+                        questionResults[currentQuestionIndex] = isCorrect;
+
+                        // Update correct answers count
+                        if (isCorrect) {
+                          correctAnswers++;
+                        }
+
                         setState(() {
                           hasVerified = true; // Hide verify button after this
                           feedbackMessage = isCorrect
@@ -130,7 +205,7 @@ class _QuizPageState extends State<QuizPage> {
                         });
                       },
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 48),
+                  minimumSize: const Size(double.infinity, 48),
                 ),
                 child: const Text('Verify Answer'),
               )
@@ -145,25 +220,37 @@ class _QuizPageState extends State<QuizPage> {
                           false; // Reset verification for next question
                     });
                   } else {
-                    // context.read<QuizCubit>().completeFreeQuiz();
-                    // Show result page or navigate to another screen
-                      Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => QuizResultPage(),
-                    ),
-                  );
-                    // Navigator.pop(context);
+                    // Stop the timer
+                    quizTimer?.cancel();
+
+                    // Calculate final metrics
+                    final minutes = timeInSeconds ~/ 60;
+                    final seconds = timeInSeconds % 60;
+                    final accuracy = calculateAccuracy();
+
+                    // Navigate to results page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => QuizResultPage(
+                          totalQuestions: widget.questions.length,
+                          correctAnswers: correctAnswers,
+                          timeInMinutes: minutes,
+                          timeInSeconds: seconds,
+                          accuracy: accuracy,
+                        ),
+                      ),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 48),
+                  minimumSize: const Size(double.infinity, 48),
                 ),
                 child: Text(
                   currentQuestionIndex == widget.questions.length - 1
                       ? 'Finish Quiz'
                       : 'Next Question',
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
               ),
       ),
@@ -194,8 +281,6 @@ class QuizHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Question $current/$total',
-                style: Theme.of(context).textTheme.bodyMedium),
-            Text('$points points',
                 style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
@@ -249,8 +334,6 @@ class _HintText extends StatelessWidget {
     );
   }
 }
-
-
 
 class AnswerOption extends StatelessWidget {
   final OptionResponseModel answer;

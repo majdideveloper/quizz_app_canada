@@ -1,10 +1,22 @@
-
-
-
 import 'package:flutter/material.dart';
+import 'package:quizz_app_canada/core/theme/theme_app.dart';
+import 'package:quizz_app_canada/features/auth/presentation/pages/register_page.dart';
+import 'package:quizz_app_canada/pages/home_page/home_page.dart';
+import 'package:quizz_app_canada/features/quiz/presentation/widgets/sign_in_section.dart';
 
 class QuizResultPage extends StatelessWidget {
-  const QuizResultPage({super.key});
+  final int totalQuestions;
+  final int correctAnswers;
+  final int timeInMinutes;
+  final int timeInSeconds;
+  final int accuracy;
+  const QuizResultPage(
+      {super.key,
+      required this.totalQuestions,
+      required this.correctAnswers,
+      required this.timeInMinutes,
+      required this.timeInSeconds,
+      required this.accuracy});
 
   @override
   Widget build(BuildContext context) {
@@ -14,32 +26,20 @@ class QuizResultPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(height: 40),
-              const ScoreCircle(score: 85),
-              const SizedBox(height: 20),
+              ScoreCircle(score: accuracy),
               const ResultMessage(message: "Excellent Work!"),
               const SubtitleMessage(message: "You're mastering this topic!"),
-              const SizedBox(height: 20),
-              const ScoreDetailsCard(
-                correctAnswers: 17,
-                totalQuestions: 20,
-                timeInMinutes: 12,
-                timeInSeconds: 45,
-                accuracy: 85,
+              ScoreDetailsCard(
+                correctAnswers: correctAnswers,
+                totalQuestions: totalQuestions,
+                timeInMinutes: timeInMinutes,
+                timeInSeconds: timeInSeconds,
+                accuracy: accuracy,
               ),
-              const SizedBox(height: 20),
-              const ActionButton(
-                text: "View Detailed Analysis",
-                isPrimary: true,
-              ),
-              const SizedBox(height: 10),
-              const ActionButton(
-                text: "Retake Quiz",
-                isPrimary: false,
-                isOutlined: true,
-              ),
-              const SizedBox(height: 10),
+              SignInSection(),
+              
               const ActionButton(
                 text: "Back to Home",
                 isPrimary: false,
@@ -56,17 +56,21 @@ class QuizResultPage extends StatelessWidget {
 class ScoreCircle extends StatelessWidget {
   final int score;
 
-  const ScoreCircle({Key? key, required this.score}) : super(key: key);
+  const ScoreCircle({super.key, required this.score});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      width: 120,
-      height: 120,
+      width: AppSpacing.xxxl,
+      height: AppSpacing.xxxl,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: const Color(0xFF7E57C2),
-        border: Border.all(color: Colors.blue.shade100, width: 2),
+        color: colorScheme.primary,
+        border: Border.all(
+            color: Colors.blue.shade100,
+            width: 2), //! need to fix this to avoid hard coding
       ),
       child: Center(
         child: Column(
@@ -74,18 +78,11 @@ class ScoreCircle extends StatelessWidget {
           children: [
             Text(
               "$score%",
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              style: AppTypography.createHeadingLarge(colorScheme.onPrimary),
             ),
-            const Text(
-              "Your Score",
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.white,
-              ),
+            Text(
+              "__Your Score",
+              style: AppTypography.createHeadingSmall(colorScheme.onPrimary),
             ),
           ],
         ),
@@ -94,6 +91,7 @@ class ScoreCircle extends StatelessWidget {
   }
 }
 
+//! work in the message to display with type of score
 class ResultMessage extends StatelessWidget {
   final String message;
 
@@ -112,6 +110,7 @@ class ResultMessage extends StatelessWidget {
   }
 }
 
+//! make it this widget inside the result message
 class SubtitleMessage extends StatelessWidget {
   final String message;
 
@@ -157,7 +156,7 @@ class ScoreDetailsCard extends StatelessWidget {
         child: Column(
           children: [
             const Text(
-              "Score Details",
+              "__Score Details",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -245,10 +244,19 @@ class ActionButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            '/home',
+          );
+        },
         style: ElevatedButton.styleFrom(
-          backgroundColor: isPrimary ? const Color(0xFF7E57C2) : (isOutlined ? Colors.white : Colors.grey[200]),
-          foregroundColor: isPrimary ? Colors.white : (isOutlined ? const Color(0xFF7E57C2) : Colors.black87),
+          backgroundColor: isPrimary
+              ? const Color(0xFF7E57C2)
+              : (isOutlined ? Colors.white : Colors.grey[200]),
+          foregroundColor: isPrimary
+              ? Colors.white
+              : (isOutlined ? const Color(0xFF7E57C2) : Colors.black87),
           padding: const EdgeInsets.symmetric(vertical: 16),
           elevation: isPrimary ? 2 : 0,
           shape: RoundedRectangleBorder(

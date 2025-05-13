@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:quizz_app_canada/core/utils/logger.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/category_model.dart';
 import 'package:quizz_app_canada/features/quiz/data/repositories/category_repository.dart';
 
@@ -10,7 +11,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   final CategoryRepository categoryRepository;
 
   CategoryCubit({required this.categoryRepository})
-    : super(const CategoryState.initial());
+      : super(const CategoryState.initial());
 
   Future<void> fetchCategories() async {
     emit(const CategoryState.loading());

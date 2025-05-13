@@ -4,6 +4,7 @@ class NameCollections {
   static const String questions = 'questions';
   static const String optionsResponses = 'options_responses';
   static const String categories = 'categories';
+  static const String posts = 'posts';
 }
 
 class BaseUrl {

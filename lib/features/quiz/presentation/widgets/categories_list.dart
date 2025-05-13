@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizz_app_canada/core/utils/logger.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/category_model.dart';
 
-import 'package:quizz_app_canada/features/quiz/presentation/cubit/category/category_cubit.dart';
+import 'package:quizz_app_canada/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:quizz_app_canada/features/quiz/presentation/pages/category_page.dart';
 import 'package:quizz_app_canada/features/quiz/presentation/pages/quiz_page.dart';
 
@@ -12,7 +13,6 @@ class CategoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<CategoryCubit, CategoryState>(
@@ -89,6 +89,3 @@ class CategoryItem extends StatelessWidget {
     );
   }
 }
-
-
-

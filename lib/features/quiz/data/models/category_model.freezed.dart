@@ -26,6 +26,8 @@ mixin _$CategoryModel {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'quizzes')
   List<QuizModel> get quizzes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'courses')
+  List<CourseModel> get courses => throw _privateConstructorUsedError;
 
   /// Serializes this CategoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +48,8 @@ abstract class $CategoryModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'quizzes') List<QuizModel> quizzes});
+      @JsonKey(name: 'quizzes') List<QuizModel> quizzes,
+      @JsonKey(name: 'courses') List<CourseModel> courses});
 }
 
 /// @nodoc
@@ -67,6 +70,7 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
     Object? id = null,
     Object? name = null,
     Object? quizzes = null,
+    Object? courses = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -81,6 +85,10 @@ class _$CategoryModelCopyWithImpl<$Res, $Val extends CategoryModel>
           ? _value.quizzes
           : quizzes // ignore: cast_nullable_to_non_nullable
               as List<QuizModel>,
+      courses: null == courses
+          ? _value.courses
+          : courses // ignore: cast_nullable_to_non_nullable
+              as List<CourseModel>,
     ) as $Val);
   }
 }
@@ -96,7 +104,8 @@ abstract class _$$CategoryModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'name') String name,
-      @JsonKey(name: 'quizzes') List<QuizModel> quizzes});
+      @JsonKey(name: 'quizzes') List<QuizModel> quizzes,
+      @JsonKey(name: 'courses') List<CourseModel> courses});
 }
 
 /// @nodoc
@@ -115,6 +124,7 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? quizzes = null,
+    Object? courses = null,
   }) {
     return _then(_$CategoryModelImpl(
       id: null == id
@@ -129,6 +139,10 @@ class __$$CategoryModelImplCopyWithImpl<$Res>
           ? _value._quizzes
           : quizzes // ignore: cast_nullable_to_non_nullable
               as List<QuizModel>,
+      courses: null == courses
+          ? _value._courses
+          : courses // ignore: cast_nullable_to_non_nullable
+              as List<CourseModel>,
     ));
   }
 }
@@ -139,8 +153,10 @@ class _$CategoryModelImpl implements _CategoryModel {
   const _$CategoryModelImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'name') required this.name,
-      @JsonKey(name: 'quizzes') required final List<QuizModel> quizzes})
-      : _quizzes = quizzes;
+      @JsonKey(name: 'quizzes') required final List<QuizModel> quizzes,
+      @JsonKey(name: 'courses') required final List<CourseModel> courses})
+      : _quizzes = quizzes,
+        _courses = courses;
 
   factory _$CategoryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryModelImplFromJson(json);
@@ -160,9 +176,18 @@ class _$CategoryModelImpl implements _CategoryModel {
     return EqualUnmodifiableListView(_quizzes);
   }
 
+  final List<CourseModel> _courses;
+  @override
+  @JsonKey(name: 'courses')
+  List<CourseModel> get courses {
+    if (_courses is EqualUnmodifiableListView) return _courses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_courses);
+  }
+
   @override
   String toString() {
-    return 'CategoryModel(id: $id, name: $name, quizzes: $quizzes)';
+    return 'CategoryModel(id: $id, name: $name, quizzes: $quizzes, courses: $courses)';
   }
 
   @override
@@ -172,13 +197,18 @@ class _$CategoryModelImpl implements _CategoryModel {
             other is _$CategoryModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality().equals(other._quizzes, _quizzes));
+            const DeepCollectionEquality().equals(other._quizzes, _quizzes) &&
+            const DeepCollectionEquality().equals(other._courses, _courses));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, const DeepCollectionEquality().hash(_quizzes));
+      runtimeType,
+      id,
+      name,
+      const DeepCollectionEquality().hash(_quizzes),
+      const DeepCollectionEquality().hash(_courses));
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.
@@ -200,7 +230,8 @@ abstract class _CategoryModel implements CategoryModel {
   const factory _CategoryModel(
           {@JsonKey(name: 'id') required final String id,
           @JsonKey(name: 'name') required final String name,
-          @JsonKey(name: 'quizzes') required final List<QuizModel> quizzes}) =
+          @JsonKey(name: 'quizzes') required final List<QuizModel> quizzes,
+          @JsonKey(name: 'courses') required final List<CourseModel> courses}) =
       _$CategoryModelImpl;
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
@@ -215,6 +246,9 @@ abstract class _CategoryModel implements CategoryModel {
   @override
   @JsonKey(name: 'quizzes')
   List<QuizModel> get quizzes;
+  @override
+  @JsonKey(name: 'courses')
+  List<CourseModel> get courses;
 
   /// Create a copy of CategoryModel
   /// with the given fields replaced by the non-null parameter values.

@@ -1,8 +1,7 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:quizz_app_canada/core/theme/theme_app.dart';
+import 'package:quizz_app_canada/core/widgets/primary_button.dart';
+import 'package:quizz_app_canada/core/widgets/secondry_button.dart';
 
 class SignInSection extends StatelessWidget {
   const SignInSection({super.key});
@@ -14,58 +13,32 @@ class SignInSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
+      height: 200,
       padding: AppSpacing.cardPadding,
       decoration: BoxDecoration(
-        color: colorScheme.surfaceBright,
-        borderRadius: BorderRadius.circular(AppSpacing.borderRadiusMd),
+        color: colorScheme.primary,
       ),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: AppSpacing.sm,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '__Sign In to Track Progress',
-              style: textTheme.displaySmall,
-            ),
-            const SizedBox(height: AppSpacing.xs),
-            Text(
-              '__Keep track of your learning journey and sync your progress across devices',
+              '__Unlock full access with more quizzes and guides',
               textAlign: TextAlign.center,
-              style: textTheme.bodyMedium,
+              style: textTheme.bodyLarge?.copyWith(
+                color: colorScheme.surface,
+              ),
             ),
-            const SignInButton(),
-            const CreateAccountButton(),
+            PrimaryButton(
+              text: '__Create Account',
+              onPressed: () => Navigator.pushNamed(context, '/register'),
+            ),
+            SecondryButton(
+              text: '__Sign In',
+              onPressed: () => Navigator.pushNamed(context, '/login'),
+              color: colorScheme.surface,
+            ),
           ]),
-    );
-  }
-}
-
-class SignInButton extends StatelessWidget {
-  const SignInButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: const Text('__Sign In'),
-      ),
-    );
-  }
-}
-
-class CreateAccountButton extends StatelessWidget {
-  const CreateAccountButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: OutlinedButton(
-        onPressed: () {},
-        child: const Text('__Create Account'),
-      ),
     );
   }
 }

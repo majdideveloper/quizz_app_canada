@@ -36,7 +36,6 @@ class CategoryRepository {
     } on CacheException {
       return Left(CacheFailure());
     } catch (e) {
-      AppLogger.logger.d(e.toString());
       return Left(SomeThingWrongFailure());
     }
   }

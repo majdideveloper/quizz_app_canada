@@ -14,6 +14,10 @@ _$CategoryModelImpl _$$CategoryModelImplFromJson(Map<String, dynamic> json) =>
           .map((e) => QuizModel.fromJson(
               RecordModel.fromJson(e as Map<String, dynamic>)))
           .toList(),
+      courses: (json['courses'] as List<dynamic>)
+          .map((e) => CourseModel.fromJson(
+              RecordModel.fromJson(e as Map<String, dynamic>)))
+          .toList(),
     );
 
 Map<String, dynamic> _$$CategoryModelImplToJson(_$CategoryModelImpl instance) =>
@@ -21,4 +25,5 @@ Map<String, dynamic> _$$CategoryModelImplToJson(_$CategoryModelImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'quizzes': instance.quizzes,
+      'courses': instance.courses,
     };

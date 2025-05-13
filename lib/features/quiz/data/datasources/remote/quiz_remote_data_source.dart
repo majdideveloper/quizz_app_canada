@@ -16,7 +16,6 @@ class QuizRemoteDataSource {
           .getOne(quizId, expand: 'questions.options, questions.correctOption');
       return QuizModel.fromJson(record);
     } catch (e) {
-      AppLogger.logger.d(e.toString());
       throw ServerException();
     }
   }
