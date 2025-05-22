@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_app_canada/features/auth/domain/entities/user_entity.dart';
 import 'package:quizz_app_canada/features/auth/presentation/pages/dashboard_user_page.dart';
+import 'package:quizz_app_canada/features/auth/presentation/pages/edit_profile_page.dart';
 import 'package:quizz_app_canada/features/auth/presentation/pages/login_page.dart';
 import 'package:quizz_app_canada/features/auth/presentation/pages/register_page.dart';
 import 'package:quizz_app_canada/features/blog/domain/entities/blog_entity.dart';
@@ -42,6 +43,14 @@ class OnGenerateRoute {
       case '/dashboard_user':
         if (args is UserEntity) {
           return materialPageBuilder(DashboardUserPage(
+            user: args,
+          ));
+        } else {
+          return materialPageBuilder(const ErrorPage());
+        }
+      case '/edit_profile_page':
+        if (args is UserEntity) {
+          return materialPageBuilder(EditProfilePage(
             user: args,
           ));
         } else {
