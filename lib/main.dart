@@ -9,6 +9,7 @@ import 'package:quizz_app_canada/features/blog/presentation/cubit/blog_cubit.dar
 import 'package:quizz_app_canada/features/category/presentation/cubit/category/category_cubit.dart';
 import 'package:quizz_app_canada/features/course/presentation/cubit/cubit/course/course_cubit.dart';
 import 'package:quizz_app_canada/features/faq/presentation/cubit/faq_cubit.dart';
+import 'package:quizz_app_canada/features/question/presentation/cubit/question_cubit.dart';
 import 'package:quizz_app_canada/features/quiz/presentation/cubit/quiz/quiz_cubit.dart';
 import 'package:quizz_app_canada/features/resource/presentation/cubit/resource_cubit.dart';
 
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<ResourceCubit>(
           create: (_) =>
               di.sl<ResourceCubit>()..loadResources(), // Inject and call
+        ),
+        BlocProvider<QuestionCubit>(
+          create: (context) => di.sl<QuestionCubit>(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
