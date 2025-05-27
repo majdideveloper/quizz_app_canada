@@ -56,7 +56,7 @@ class _AddQuestionPageState extends State<AddQuestionPage> {
         options: _optionControllers.map((c) => c.text).toList(),
         correctOptionIndex: _correctOptionIndex!,
         imageUrl: null, // Will be set after upload
-        categoryId: '6cd9e356-677b-418e-baaa-f215df26a311', //   _category,
+        categoryId: _category,
         difficulty: _difficulty,
         explanation: _explanationController.text,
       );
@@ -219,9 +219,17 @@ class _AddQuestionPageState extends State<AddQuestionPage> {
                             const InputDecoration(labelText: 'Select category'),
                         items: const [
                           DropdownMenuItem(
-                              value: 'cat1', child: Text('Category 1')),
+                              value: '6cd9e356-677b-418e-baaa-f215df26a311',
+                              child: Text('Category A')),
                           DropdownMenuItem(
-                              value: 'cat2', child: Text('Category 2')),
+                              value: '1b7e69ba-b316-4ef7-a8b9-f986433c62f8',
+                              child: Text('Category B')),
+                          DropdownMenuItem(
+                              value: 'afe91b85-570c-4050-9340-feb0b950251a',
+                              child: Text('Category C')),
+                          DropdownMenuItem(
+                              value: '82853684-b450-4b66-b357-9fb053bc0df9',
+                              child: Text('Category D')),
                         ],
                         onChanged: (val) => setState(() => _category = val),
                         validator: (v) => v == null ? 'Required' : null,
