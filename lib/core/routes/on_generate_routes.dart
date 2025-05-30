@@ -12,6 +12,7 @@ import 'package:quizz_app_canada/features/course/domain/entities/course_entity.d
 import 'package:quizz_app_canada/features/course/presentation/pages/course_details_page.dart';
 import 'package:quizz_app_canada/features/faq/domain/entities/faq_entity.dart';
 import 'package:quizz_app_canada/features/faq/presentation/pages/all_faq_list_page.dart';
+import 'package:quizz_app_canada/features/question/presentation/pages/add_question_page.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/category_model.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/course_model.dart';
 import 'package:quizz_app_canada/features/quiz/data/models/question_model.dart';
@@ -27,7 +28,7 @@ class OnGenerateRoute {
 
     switch (name) {
       case '/':
-        return materialPageBuilder(const HomePage());
+        return materialPageBuilder(const AddQuestionPage()); //AddQuestionPage()
       case '/quiz':
         if (args is List<QuestionModel>) {
           return materialPageBuilder(QuizPage(questions: args));

@@ -25,6 +25,7 @@ mixin _$UserModel {
   String get name => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +47,8 @@ abstract class $UserModelCopyWith<$Res> {
       String email,
       String name,
       String? avatarUrl,
-      bool isVerified});
+      bool isVerified,
+      String role});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? name = null,
     Object? avatarUrl = freezed,
     Object? isVerified = null,
+    Object? role = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -91,6 +94,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -108,7 +115,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String email,
       String name,
       String? avatarUrl,
-      bool isVerified});
+      bool isVerified,
+      String role});
 }
 
 /// @nodoc
@@ -129,6 +137,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? avatarUrl = freezed,
     Object? isVerified = null,
+    Object? role = null,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -151,6 +160,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -163,7 +176,8 @@ class _$UserModelImpl extends _UserModel {
       required this.email,
       required this.name,
       this.avatarUrl,
-      this.isVerified = false})
+      this.isVerified = false,
+      required this.role})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -180,10 +194,12 @@ class _$UserModelImpl extends _UserModel {
   @override
   @JsonKey()
   final bool isVerified;
+  @override
+  final String role;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, name: $name, avatarUrl: $avatarUrl, isVerified: $isVerified)';
+    return 'UserModel(id: $id, email: $email, name: $name, avatarUrl: $avatarUrl, isVerified: $isVerified, role: $role)';
   }
 
   @override
@@ -197,13 +213,14 @@ class _$UserModelImpl extends _UserModel {
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
             (identical(other.isVerified, isVerified) ||
-                other.isVerified == isVerified));
+                other.isVerified == isVerified) &&
+            (identical(other.role, role) || other.role == role));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, email, name, avatarUrl, isVerified);
+      Object.hash(runtimeType, id, email, name, avatarUrl, isVerified, role);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -227,7 +244,8 @@ abstract class _UserModel extends UserModel {
       required final String email,
       required final String name,
       final String? avatarUrl,
-      final bool isVerified}) = _$UserModelImpl;
+      final bool isVerified,
+      required final String role}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -243,6 +261,8 @@ abstract class _UserModel extends UserModel {
   String? get avatarUrl;
   @override
   bool get isVerified;
+  @override
+  String get role;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

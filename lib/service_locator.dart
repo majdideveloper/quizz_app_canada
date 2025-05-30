@@ -8,6 +8,7 @@ import 'package:quizz_app_canada/features/auth/auth_service_locator.dart';
 import 'package:quizz_app_canada/features/blog/blog_service_locator.dart';
 import 'package:quizz_app_canada/features/course/course_service_locator.dart';
 import 'package:quizz_app_canada/features/faq/faq_service_locator.dart';
+import 'package:quizz_app_canada/features/question/question_service_locator.dart';
 import 'package:quizz_app_canada/features/quiz/quiz_service_locator.dart';
 import 'package:quizz_app_canada/features/resource/resource_service_locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,4 +39,5 @@ Future<void> init() async {
   await courseServiceLocator();
   await faqServiceLocator();
   await resourceServiceLocator();
+  await questionServiceLocator();
 }

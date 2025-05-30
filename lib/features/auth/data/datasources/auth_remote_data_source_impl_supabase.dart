@@ -30,9 +30,10 @@ class AuthRemoteDataSourceImplSupabase implements AuthRemoteDataSource {
       return UserModel(
         id: user.id,
         email: user.email ?? '',
-        name: profile['name'] ?? '',
-        avatarUrl: profile['profile_image'] ?? '',
-        isVerified: user.emailConfirmedAt != null,
+        name: user.email ?? '',
+        role: user.role ?? 'user',
+        // avatar: profile['avatar'] ?? '',
+        // verified: user.emailConfirmedAt != null,
       );
     } catch (e, stackTrace) {
       AppLogger.logger.e('Sign-in error', error: e, stackTrace: stackTrace);
@@ -48,12 +49,11 @@ class AuthRemoteDataSourceImplSupabase implements AuthRemoteDataSource {
       final response = await supabase.auth.signUp(
         email: email,
         password: password,
+        emailRedirectTo:
+            'majdideveloper@gmail.com', // optional if not using magic link
         data: {
           'name': name, // metadata stored in auth.users
         },
-      );
-      await supabase.auth.updateUser(
-        UserAttributes(email: 'newemail@example.com'),
       );
 
       final user = response.user;
@@ -94,12 +94,13 @@ class AuthRemoteDataSourceImplSupabase implements AuthRemoteDataSource {
     // final profile = await _getUserProfile(user.id);
 
     return UserModel(
-      id: user.id,
-      email: user.email ?? '',
-      name: user.email ?? '',
-      // avatar: profile['avatar'] ?? '',
-      // verified: user.emailConfirmedAt != null,
-    );
+        id: user.id,
+        email: user.email ?? '',
+        name: user.email ?? '',
+        role: user.role ?? 'user'
+        // avatar: profile['avatar'] ?? '',
+        // verified: user.emailConfirmedAt != null,
+        );
   }
 
   Exception _handleSupabaseError(dynamic error) {

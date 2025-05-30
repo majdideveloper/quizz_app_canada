@@ -10,5 +10,6 @@ class UserEntity with _$UserEntity {
     required String name,
     String? avatarUrl,
     required bool isVerified,
+    required String role,
   }) = _UserEntity;
 }
