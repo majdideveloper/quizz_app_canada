@@ -21,6 +21,7 @@ mixin _$UserEntity {
   String get name => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -40,7 +41,8 @@ abstract class $UserEntityCopyWith<$Res> {
       String email,
       String name,
       String? avatarUrl,
-      bool isVerified});
+      bool isVerified,
+      String role});
 }
 
 /// @nodoc
@@ -63,6 +65,7 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? name = null,
     Object? avatarUrl = freezed,
     Object? isVerified = null,
+    Object? role = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -85,6 +88,10 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -102,7 +109,8 @@ abstract class _$$UserEntityImplCopyWith<$Res>
       String email,
       String name,
       String? avatarUrl,
-      bool isVerified});
+      bool isVerified,
+      String role});
 }
 
 /// @nodoc
@@ -123,6 +131,7 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? name = null,
     Object? avatarUrl = freezed,
     Object? isVerified = null,
+    Object? role = null,
   }) {
     return _then(_$UserEntityImpl(
       id: null == id
@@ -145,6 +154,10 @@ class __$$UserEntityImplCopyWithImpl<$Res>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -157,7 +170,8 @@ class _$UserEntityImpl implements _UserEntity {
       required this.email,
       required this.name,
       this.avatarUrl,
-      required this.isVerified});
+      required this.isVerified,
+      required this.role});
 
   @override
   final String id;
@@ -169,10 +183,12 @@ class _$UserEntityImpl implements _UserEntity {
   final String? avatarUrl;
   @override
   final bool isVerified;
+  @override
+  final String role;
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, email: $email, name: $name, avatarUrl: $avatarUrl, isVerified: $isVerified)';
+    return 'UserEntity(id: $id, email: $email, name: $name, avatarUrl: $avatarUrl, isVerified: $isVerified, role: $role)';
   }
 
   @override
@@ -186,12 +202,13 @@ class _$UserEntityImpl implements _UserEntity {
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
             (identical(other.isVerified, isVerified) ||
-                other.isVerified == isVerified));
+                other.isVerified == isVerified) &&
+            (identical(other.role, role) || other.role == role));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, email, name, avatarUrl, isVerified);
+      Object.hash(runtimeType, id, email, name, avatarUrl, isVerified, role);
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -208,7 +225,8 @@ abstract class _UserEntity implements UserEntity {
       required final String email,
       required final String name,
       final String? avatarUrl,
-      required final bool isVerified}) = _$UserEntityImpl;
+      required final bool isVerified,
+      required final String role}) = _$UserEntityImpl;
 
   @override
   String get id;
@@ -220,6 +238,8 @@ abstract class _UserEntity implements UserEntity {
   String? get avatarUrl;
   @override
   bool get isVerified;
+  @override
+  String get role;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.

@@ -25,6 +25,7 @@ class AuthRemoteDataSourceImplSupabase implements AuthRemoteDataSource {
         id: user.id,
         email: user.email ?? '',
         name: user.email ?? '',
+        role: user.role ?? 'user',
         // avatar: profile['avatar'] ?? '',
         // verified: user.emailConfirmedAt != null,
       );
@@ -65,42 +66,44 @@ class AuthRemoteDataSourceImplSupabase implements AuthRemoteDataSource {
   //   }
   // }
   @override
-Future<UserModel> signUp(String email, String password, String name) async {
-  try {
-    AppLogger.logger.d('Signing up with email: $email');
+  Future<UserModel> signUp(String email, String password, String name) async {
+    try {
+      AppLogger.logger.d('Signing up with email: $email');
 
-    final response = await supabase.auth.signUp(
-      email: email,
-      password: password,
-      emailRedirectTo: 'majdideveloper@gmail.com', // optional if not using magic link
-      data: {
-        'name': name, // metadata stored in auth.users
-      },
-    );
+      final response = await supabase.auth.signUp(
+        email: email,
+        password: password,
+        emailRedirectTo:
+            'majdideveloper@gmail.com', // optional if not using magic link
+        data: {
+          'name': name, // metadata stored in auth.users
+        },
+      );
 
-    final user = response.user;
-    if (user == null) {
-      throw Exception("Sign-up failed: No user returned.");
+      final user = response.user;
+      if (user == null) {
+        throw Exception("Sign-up failed: No user returned.");
+      }
+
+      AppLogger.logger.d('Sign-up successful for user ID: ${user.id}');
+
+      // Insert additional profile data into custom "users" table
+      await supabase.from('users').insert({
+        'id': user.id,
+        'email': user.email,
+        'name': name,
+        'subscription': 'free',
+        'hour_study': 0.0,
+      });
+
+      // Optionally sign in immediately
+      return await signIn(email, password);
+    } catch (e, stackTrace) {
+      AppLogger.logger.e('Sign-up error', error: e, stackTrace: stackTrace);
+      throw _handleSupabaseError(e);
     }
-
-    AppLogger.logger.d('Sign-up successful for user ID: ${user.id}');
-
-    // Insert additional profile data into custom "users" table
-    await supabase.from('users').insert({
-      'id': user.id,
-      'email': user.email,
-      'name': name,
-      'subscription': 'free',
-      'hour_study': 0.0,
-    });
-
-    // Optionally sign in immediately
-    return await signIn(email, password);
-  } catch (e, stackTrace) {
-    AppLogger.logger.e('Sign-up error', error: e, stackTrace: stackTrace);
-    throw _handleSupabaseError(e);
   }
-}
+
   @override
   Future<void> signOut() async {
     await supabase.auth.signOut();
@@ -115,12 +118,13 @@ Future<UserModel> signUp(String email, String password, String name) async {
     // final profile = await _getUserProfile(user.id);
 
     return UserModel(
-      id: user.id,
-      email: user.email ?? '',
-      name: user.email ?? '',
-      // avatar: profile['avatar'] ?? '',
-      // verified: user.emailConfirmedAt != null,
-    );
+        id: user.id,
+        email: user.email ?? '',
+        name: user.email ?? '',
+        role: user.role ?? 'user'
+        // avatar: profile['avatar'] ?? '',
+        // verified: user.emailConfirmedAt != null,
+        );
   }
 
   // Future<Map<String, dynamic>> _getUserProfile(String userId) async {
